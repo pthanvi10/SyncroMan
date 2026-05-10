@@ -11,13 +11,17 @@ const VibeCheck = ({ onSync }) => {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <textarea
-        className="w-full p-4 rounded-xl border-2 border-slate-200 focus:border-indigo-500 focus:ring-0 text-lg transition-all"
+        // ✅ Updated to match the dark glass theme and dynamic mood focus
+        className="w-full p-4 text-lg text-white transition-all bg-transparent border-2 outline-none resize-none rounded-xl border-white/20 focus:border-mood-mid placeholder-white/40"
         placeholder="How is your 'mann' right now? (e.g. I am focused and ready...)"
         value={text}
         onChange={(e) => setText(e.target.value)}
-        rows="2"
+        rows="3" // Bumped to 3 rows so it looks nicely proportioned
       />
-      <button className="w-full py-3 bg-indigo-600 text-white rounded-lg font-bold hover:bg-indigo-700 transition-colors shadow-lg">
+      <button
+        // ✅ Updated to match the AddTask button with dynamic hover state
+        className="w-full py-3 font-bold transition-all bg-white shadow-lg text-slate-900 rounded-xl hover:bg-mood-mid hover:text-white"
+      >
         Perform Vibe Check
       </button>
     </form>

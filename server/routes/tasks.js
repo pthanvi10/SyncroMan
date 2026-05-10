@@ -1,7 +1,7 @@
 // server/routes/tasks.js
 const express = require('express');
 const router = express.Router();
-const { calculateEnergyLevel } = require('../utils/vibeParser');
+const { calculateEnergyLevel } = require('../utils/VibeParser');
 const Task = require('../models/Task'); // Assuming you've built the Task model!
 
 // POST /api/tasks/sync 

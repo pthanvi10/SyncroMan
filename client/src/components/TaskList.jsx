@@ -1,20 +1,25 @@
 import React from 'react';
-import TaskItem from './TaskItem'; // ADD THIS LINE
+import TaskItem from './TaskItem';
 
-const TaskList = ({ tasks, onComplete
- }) => {
-if (!tasks || !Array.isArray(tasks) || tasks.length === 0) {
+const TaskList = ({ tasks, onComplete }) => {
+  // Empty State: When no tasks match the current energy vibe
+  if (!tasks || !Array.isArray(tasks) || tasks.length === 0) {
     return (
-      <div className="p-6 bg-white/10 rounded-lg text-center">
-        <p className="italic opacity-70">No tasks match your current energy. Perhaps take a break? ☕</p>
+      // ✅ Updated to match the exact glassmorphic style of AddTask and TaskItem
+      <div className="p-8 text-center transition-all border shadow-xl bg-white/5 backdrop-blur-xl border-white/10 rounded-2xl">
+        <p className="text-lg italic tracking-wide text-white/70">
+          No tasks match your current energy. Perhaps take a break? ☕
+        </p>
       </div>
     );
   }
 
+  // Populated State: Renders the list of TaskItems
   return (
-    <ul className="space-y-3">
+    // ✅ Bumped space-y-3 to space-y-4 just to give those nice glowing TaskItems room to breathe
+    <ul className="space-y-4">
       {tasks.map(task => (
-       <TaskItem key={task._id} task={task} onComplete={onComplete} />
+        <TaskItem key={task._id} task={task} onComplete={onComplete} />
       ))}
     </ul>
   );

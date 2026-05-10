@@ -1,7 +1,8 @@
 import React from 'react';
 
 const TaskItem = ({ task, onComplete }) => {
-  // Define energy colors/labels for visual quick-glance
+  // We keep these colors static! This ensures a Level 5 task always
+  // looks like a high-energy task, regardless of the user's current mood.
   const energyColors = {
     1: 'bg-blue-500/10 text-blue-400 border-blue-500/20',
     2: 'bg-cyan-500/10 text-cyan-400 border-cyan-500/20',
@@ -11,19 +12,21 @@ const TaskItem = ({ task, onComplete }) => {
   };
 
   return (
-    <li className="group relative flex items-center justify-between p-4 bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl transition-all hover:bg-white/10 hover:border-white/20 shadow-xl">
+    <li className="relative flex items-center justify-between p-4 transition-all border shadow-xl group bg-white/5 backdrop-blur-lg border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20">
       <div className="flex items-center space-x-4">
-        {/* Simple Checkbox/Circle for completion */}
-        <button 
+
+        {/* ✅ Checkbox border now matches the dynamic dashboard vibe on hover */}
+        <button
           onClick={() => onComplete(task._id)}
-          className="w-6 h-6 rounded-full border-2 border-white/30 group-hover:border-indigo-500 transition-colors flex items-center justify-center"
+          className="flex items-center justify-center w-6 h-6 transition-colors border-2 rounded-full border-white/30 group-hover:border-mood-mid"
         >
-          <div className="w-3 h-3 rounded-full bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+          {/* ✅ Checkbox fill color now matches the dynamic dashboard vibe */}
+          <div className="w-3 h-3 transition-opacity rounded-full opacity-0 bg-mood-mid group-hover:opacity-100" />
         </button>
-        
+
         <div>
           <h3 className="text-lg font-medium text-white">{task.title}</h3>
-          <p className="text-xs text-white/50 uppercase tracking-widest">Added today</p>
+          <p className="text-xs tracking-widest uppercase text-white/50">Added today</p>
         </div>
       </div>
 
